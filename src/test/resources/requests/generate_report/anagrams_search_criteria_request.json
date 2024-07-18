@@ -1,0 +1,8 @@
+{
+  "criteria": {
+    "type": "SINGLE",
+    "key": "buyerParty",
+    "cop": "EQ",
+    "value": "KANMU_EB"
+  }
+}

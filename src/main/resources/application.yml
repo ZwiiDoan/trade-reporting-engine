@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: trade-reporting-engine
+  datasource:
+    username: test
+    password: test
+    url: jdbc:postgresql://localhost:5432/trade-reporting-engine
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 8
+      connection-test-query: select 1
+      connection-init-sql: select 1
+  flyway:
+    enabled: true
+    out-of-order: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+logging:
+  level:
+    per.duyd: DEBUG

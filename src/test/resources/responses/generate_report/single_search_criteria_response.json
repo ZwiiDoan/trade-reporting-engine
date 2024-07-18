@@ -1,0 +1,22 @@
+{
+  "tradeEvents": [
+    {
+      "buyerParty": "EMU_BANK",
+      "sellerParty": "BISON_BANK",
+      "premiumAmount": 500.0000,
+      "premiumCurrency": "USD"
+    },
+    {
+      "buyerParty": "EMU_BANK",
+      "sellerParty": "BISON_BANK",
+      "premiumAmount": 150.0000,
+      "premiumCurrency": "AUD"
+    },
+    {
+      "buyerParty": "EMU_BANK",
+      "sellerParty": "BISON_BANK",
+      "premiumAmount": 600.0000,
+      "premiumCurrency": "USD"
+    }
+  ]
+}

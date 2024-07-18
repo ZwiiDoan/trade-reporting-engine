@@ -1,0 +1,4 @@
+{
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "Failed to load trade events from local folder"
+}

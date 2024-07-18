@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "type": "COMBINED",
+    "lop": "AND",
+    "criteria": [
+      {
+        "key": "sellerParty",
+        "cop": "EQ",
+        "value": "BISON_BANK"
+      },
+      {
+        "type": "SINGLE",
+        "cop": "EQ",
+        "value": "AUD"
+      }
+    ]
+  }
+}

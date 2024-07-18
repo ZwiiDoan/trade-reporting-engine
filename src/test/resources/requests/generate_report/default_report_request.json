@@ -1,0 +1,44 @@
+{
+  "criteria": {
+    "type": "COMBINED",
+    "lop": "OR",
+    "criteria": [
+      {
+        "type": "COMBINED",
+        "lop": "AND",
+        "criteria": [
+          {
+            "type": "SINGLE",
+            "key": "sellerParty",
+            "cop": "EQ",
+            "value": "EMU_BANK"
+          },
+          {
+            "type": "SINGLE",
+            "key": "premiumCurrency",
+            "cop": "EQ",
+            "value": "AUD"
+          }
+        ]
+      },
+      {
+        "type": "COMBINED",
+        "lop": "AND",
+        "criteria": [
+          {
+            "type": "SINGLE",
+            "key": "sellerParty",
+            "cop": "EQ",
+            "value": "BISON_BANK"
+          },
+          {
+            "type": "SINGLE",
+            "key": "premiumCurrency",
+            "cop": "EQ",
+            "value": "USD"
+          }
+        ]
+      }
+    ]
+  }
+}

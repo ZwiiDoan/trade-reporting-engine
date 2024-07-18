@@ -1,0 +1,92 @@
+{
+  "criteria": {
+    "type": "COMBINED",
+    "lop": "OR",
+    "criteria": [
+      {
+        "type": "COMBINED",
+        "lop": "AND",
+        "criteria": [
+          {
+            "type": "SINGLE",
+            "key": "buyerParty",
+            "cop": "EQ",
+            "value": "LEFT_BANK"
+          },
+          {
+            "type": "SINGLE",
+            "key": "premiumAmount",
+            "cop": "LT",
+            "value": "200"
+          }
+        ]
+      },
+      {
+        "type": "COMBINED",
+        "lop": "AND",
+        "criteria": [
+          {
+            "type": "SINGLE",
+            "key": "buyerParty",
+            "cop": "EQ",
+            "value": "EMU_BANK"
+          },
+          {
+            "type": "SINGLE",
+            "key": "sellerParty",
+            "cop": "EQ",
+            "value": "BISON_BANK"
+          },
+          {
+            "type": "COMBINED",
+            "lop": "NOT",
+            "criteria": [
+              {
+                "type": "SINGLE",
+                "key": "premiumCurrency",
+                "cop": "IN",
+                "value": "AUD,HKD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "COMBINED",
+        "lop": "AND",
+        "criteria": [
+          {
+            "type": "SINGLE",
+            "key": "sellerParty",
+            "cop": "LIKE",
+            "value": "MU_B"
+          },
+          {
+            "type": "COMBINED",
+            "lop": "NOT",
+            "criteria": [
+              {
+                "type": "SINGLE",
+                "key": "premiumAmount",
+                "cop": "GTE",
+                "value": "100.0001"
+              }
+            ]
+          },
+          {
+            "type": "COMBINED",
+            "lop": "NOT",
+            "criteria": [
+              {
+                "type": "SINGLE",
+                "key": "buyerParty",
+                "cop": "LIKE",
+                "value": "EFT_B"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
