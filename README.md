@@ -1,7 +1,11 @@
 ### Prerequisites
-* Install and run [Docker Compose](https://docs.docker.com/compose/install/)
+* Install and run [Docker](https://docs.docker.com/engine/install/)
 
 ### Build
+Give execution permission to `gradlew`:
+```shell
+chmod +x ./gradlew
+```
 Execute from repo's root directory
 ```shell
 /.gradlew clean build
