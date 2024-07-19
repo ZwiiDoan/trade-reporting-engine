@@ -22,9 +22,9 @@ import per.duyd.interview.tre.entity.TradeEvent;
 
 class DecimalSinglePredicateBuilderTest {
 
+  private static final BigDecimal TEST_VALUE = new BigDecimal(100);
   private SinglePredicateBuilder<TradeEvent> decimalSinglePredicateBuilder;
   private PathBuilder<TradeEvent> entityPath;
-  private static final BigDecimal TEST_VALUE = new BigDecimal(100);
 
   public static Stream<Arguments> buildPredicateTestParams() {
     NumberPath<BigDecimal> entityPath = new PathBuilder<>(TradeEvent.class, "tradeEvent")

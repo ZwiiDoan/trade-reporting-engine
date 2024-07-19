@@ -4,8 +4,8 @@ spring:
   datasource:
     username: test
     password: test
-    url: jdbc:postgresql://localhost:5432/trade-reporting-engine
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:h2:mem:test
+    driver-class-name: org.h2.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 2
@@ -20,5 +20,7 @@ spring:
       write-dates-as-timestamps: false
 
 logging:
+  pattern:
+    level: "%5p [correlationId=%X{correlationId:-}]"
   level:
     per.duyd: DEBUG

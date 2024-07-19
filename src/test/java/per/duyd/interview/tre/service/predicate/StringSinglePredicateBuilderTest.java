@@ -1,12 +1,13 @@
 package per.duyd.interview.tre.service.predicate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.core.types.dsl.StringPath;
-import java.math.BigDecimal;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ import per.duyd.interview.tre.entity.TradeEvent;
 
 class StringSinglePredicateBuilderTest {
 
+  private static final String TEST_VALUE = "Test";
   private SinglePredicateBuilder<TradeEvent> stringSinglePredicateBuilder;
   private PathBuilder<TradeEvent> entityPath;
-  private static final String TEST_VALUE = "Test";
 
   public static Stream<Arguments> buildPredicateTestParams() {
     StringPath entityPath = new PathBuilder<>(TradeEvent.class, "tradeEvent")

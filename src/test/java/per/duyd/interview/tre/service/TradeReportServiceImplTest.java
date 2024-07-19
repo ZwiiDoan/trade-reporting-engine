@@ -1,6 +1,5 @@
 package per.duyd.interview.tre.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
@@ -8,7 +7,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,12 +51,10 @@ class TradeReportServiceImplTest {
   @Test
   void loadData_shouldLoadTradeEventsFromLocalFolder_givenValidRequest() {
     //Given:
-    LoadTradeDataRequest loadTradeDataRequest = LoadTradeDataRequest.builder()
-        .eventFolderPath("test-folder")
-        .build();
+    String eventFolderPath = "test-folder";
 
     //When:
-    tradeReportService.loadData(loadTradeDataRequest);
+    tradeReportService.loadData(eventFolderPath);
 
     //Then:
     verify(tradeEventLoader).loadFromLocalFolder("test-folder");
@@ -69,7 +65,8 @@ class TradeReportServiceImplTest {
     //Given:
     SearchCriteria searchCriteria = mock(SearchCriteria.class);
     BooleanBuilder queryPredicate = mock(BooleanBuilder.class);
-    when(dynamicReportPredicateBuilder.buildReportPredicate(searchCriteria)).thenReturn(queryPredicate);
+    when(dynamicReportPredicateBuilder.buildReportPredicate(searchCriteria)).thenReturn(
+        queryPredicate);
 
     TradeEvent tradeEvent = mock(TradeEvent.class);
     when(tradeEventRepository.findAll(queryPredicate)).thenReturn(List.of(tradeEvent));

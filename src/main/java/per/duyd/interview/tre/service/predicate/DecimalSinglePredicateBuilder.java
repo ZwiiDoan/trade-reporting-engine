@@ -13,7 +13,8 @@ import per.duyd.interview.tre.entity.TradeEvent;
 @Component
 public class DecimalSinglePredicateBuilder implements SinglePredicateBuilder<TradeEvent> {
   @Override
-  public Predicate buildPredicate(PathBuilder<TradeEvent> entityPath, SingleSearchCriteria criteria) {
+  public Predicate buildPredicate(PathBuilder<TradeEvent> entityPath,
+                                  SingleSearchCriteria criteria) {
     NumberPath<BigDecimal> path = entityPath.getNumber(criteria.getKey().name(), BigDecimal.class);
     String value = criteria.getValue();
     return switch (criteria.getCop()) {

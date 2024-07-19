@@ -2,7 +2,6 @@ plugins {
     id "java"
     id "org.springframework.boot" version "${springbootVersion}"
     id "io.spring.dependency-management" version "${springDependencyVersion}"
-    id "com.avast.gradle.docker-compose" version "${dockerComposeVersion}"
     id 'checkstyle'
     id 'jacoco'
     id 'com.github.spotbugs' version "${spotbugsVersion}"
@@ -29,7 +28,7 @@ repositories {
 
 dependencies {
     compileOnly "org.projectlombok:lombok"
-    runtimeOnly "org.postgresql:postgresql"
+    runtimeOnly 'com.h2database:h2'
 
     annotationProcessor "org.projectlombok:lombok"
     annotationProcessor "com.querydsl:querydsl-apt:${querydslVersion}:jakarta"
@@ -42,7 +41,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     implementation "org.flywaydb:flyway-core"
-    implementation "org.flywaydb:flyway-database-postgresql"
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openApiUiVersion}"
     implementation "com.querydsl:querydsl-jpa:${querydslVersion}:jakarta"
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
@@ -56,12 +54,6 @@ dependencies {
 tasks.named("test") {
     useJUnitPlatform()
 }
-
-dockerCompose {
-    useComposeFiles = ["src/docker/docker-compose.yml"]
-}
-
-dockerCompose.isRequiredBy(test)
 
 checkstyle {
     toolVersion = '10.12.3'

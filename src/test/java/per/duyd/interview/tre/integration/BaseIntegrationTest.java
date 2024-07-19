@@ -28,23 +28,16 @@ public abstract class BaseIntegrationTest {
   @Autowired
   protected ObjectMapper objectMapper;
 
-  public MvcResult postAndValidateResponseStatus(
-      String requestFile, int expectedResponseStatus,
-      String path) throws Exception {
-    return mockMvc.perform(post(path)
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(readTestResourceFile(requestFile)))
-        .andExpect(status().is(expectedResponseStatus))
-        .andReturn();
-  }
-
   public void postAndValidateResponse(
       String requestFile, String responseFile,
       Class<?> responseClass,
       HttpStatus expectedResponseStatus, String path) throws Exception {
     //When:
-    MvcResult mvcResult =
-        postAndValidateResponseStatus(requestFile, expectedResponseStatus.value(), path);
+    MvcResult mvcResult = mockMvc.perform(post(path)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(readTestResourceFile(requestFile)))
+        .andExpect(status().is(expectedResponseStatus.value()))
+        .andReturn();
 
     //Then:
     assertThat(objectMapper.readValue(mvcResult.getResponse().getContentAsString(), responseClass))

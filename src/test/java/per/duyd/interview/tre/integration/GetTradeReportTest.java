@@ -14,7 +14,8 @@ import per.duyd.interview.tre.dto.response.TradeReportResponse;
 
 @SqlGroup({
     @Sql(scripts = "/sql/seed_trade_event_data.sql"),
-    @Sql(scripts = "/sql/cleanup_trade_event_data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    @Sql(scripts = "/sql/cleanup_trade_event_data.sql",
+        executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 })
 public class GetTradeReportTest extends BaseIntegrationTest {
 

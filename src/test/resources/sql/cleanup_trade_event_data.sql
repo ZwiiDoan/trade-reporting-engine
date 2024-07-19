@@ -1,1 +1,2 @@
-DELETE FROM public.trade_event;
+DELETE
+FROM public.trade_event;

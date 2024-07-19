@@ -1,0 +1,4 @@
+{
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "eventFolderPath must not be empty"
+}

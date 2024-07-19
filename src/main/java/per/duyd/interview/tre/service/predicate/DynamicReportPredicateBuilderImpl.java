@@ -28,7 +28,8 @@ public class DynamicReportPredicateBuilderImpl implements DynamicReportPredicate
     }
   }
 
-  private BooleanBuilder buildPredicate(PathBuilder<TradeEvent> entityPath, SearchCriteria criteria) {
+  private BooleanBuilder buildPredicate(PathBuilder<TradeEvent> entityPath,
+                                        SearchCriteria criteria) {
     BooleanBuilder rootPredicate = new BooleanBuilder();
 
     if (criteria instanceof CombinedSearchCriteria combinedSearchCriteria) {
@@ -39,7 +40,8 @@ public class DynamicReportPredicateBuilderImpl implements DynamicReportPredicate
       Predicate singlePredicate = buildSinglePredicate(entityPath, singleSearchCriteria);
       rootPredicate.and(singlePredicate);
     } else {
-      throw new IllegalArgumentException("Unsupported search criteria type: " + criteria.getClass());
+      throw new IllegalArgumentException(
+          "Unsupported search criteria type: " + criteria.getClass());
     }
 
     return rootPredicate;
@@ -62,7 +64,8 @@ public class DynamicReportPredicateBuilderImpl implements DynamicReportPredicate
           combinedPredicate.andNot(subPredicates.get(0));
         }
       }
-      default -> throw new IllegalArgumentException("Unsupported logical operator: " + combinedSearchCriteria.getLop());
+      default -> throw new IllegalArgumentException(
+          "Unsupported logical operator: " + combinedSearchCriteria.getLop());
     }
 
     return combinedPredicate;

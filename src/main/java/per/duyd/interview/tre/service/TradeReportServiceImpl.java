@@ -3,8 +3,9 @@ package per.duyd.interview.tre.service;
 import com.querydsl.core.types.Predicate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import per.duyd.interview.tre.dto.request.LoadTradeDataRequest;
+import org.springframework.transaction.annotation.Transactional;
 import per.duyd.interview.tre.dto.request.ReportName;
 import per.duyd.interview.tre.dto.request.SearchCriteria;
 import per.duyd.interview.tre.dto.response.TradeEventDto;
@@ -19,6 +20,7 @@ import per.duyd.interview.tre.service.predicate.StaticReportPredicateBuilder;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TradeReportServiceImpl implements TradeReportService {
 
   private final TradeEventLoader tradeEventLoader;
@@ -29,8 +31,9 @@ public class TradeReportServiceImpl implements TradeReportService {
   private final List<SearchResultFilter> searchResultFilters;
 
   @Override
-  public void loadData(LoadTradeDataRequest loadTradeDataRequest) {
-    tradeEventLoader.loadFromLocalFolder(loadTradeDataRequest.getEventFolderPath());
+  @Transactional
+  public int loadData(String eventFolderPath) {
+    return tradeEventLoader.loadFromLocalFolder(eventFolderPath);
   }
 
   @Override
@@ -45,10 +48,12 @@ public class TradeReportServiceImpl implements TradeReportService {
   public List<TradeEventDto> generate(ReportName reportName) {
     Predicate queryPredicate = staticReportPredicateBuilders.stream()
         .filter(
-            staticReportPredicateBuilders -> staticReportPredicateBuilders.isApplicableTo(reportName)
+            staticReportPredicateBuilders -> staticReportPredicateBuilders.isApplicableTo(
+                reportName)
         )
         .findFirst()
-        .orElseThrow(() -> new InvalidReportNameException("Report " + reportName + " is not supported"))
+        .orElseThrow(
+            () -> new InvalidReportNameException("Report " + reportName + " is not supported"))
         .getReportPredicate();
 
     return getTradeReport(queryPredicate);

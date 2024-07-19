@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import per.duyd.interview.tre.dto.request.TradeReportRequest;
 import per.duyd.interview.tre.dto.request.LoadTradeDataRequest;
 import per.duyd.interview.tre.dto.request.ReportName;
+import per.duyd.interview.tre.dto.request.TradeReportRequest;
+import per.duyd.interview.tre.dto.response.LoadDataResponse;
 import per.duyd.interview.tre.dto.response.TradeReportResponse;
 import per.duyd.interview.tre.service.TradeReportService;
 
@@ -38,7 +39,10 @@ public class TradeReportController {
   }
 
   @PostMapping("/v1/trade-report/load-data")
-  public void loadTradeData(@Valid @RequestBody LoadTradeDataRequest loadTradeDataRequest) {
-    tradeReportService.loadData(loadTradeDataRequest);
+  public LoadDataResponse loadTradeData(
+      @Valid @RequestBody LoadTradeDataRequest loadTradeDataRequest) {
+    return LoadDataResponse.builder()
+        .eventsLoaded(tradeReportService.loadData(loadTradeDataRequest.getEventFolderPath()))
+        .build();
   }
 }

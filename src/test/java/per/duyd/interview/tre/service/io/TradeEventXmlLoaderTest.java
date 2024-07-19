@@ -13,7 +13,7 @@ import static per.duyd.interview.tre.TestUtil.getTestResourceFilePath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import per.duyd.interview.tre.entity.TradeEvent;
-import per.duyd.interview.tre.exception.InvalidInputFileException;
+import per.duyd.interview.tre.exception.InvalidInputFolderException;
 import per.duyd.interview.tre.repository.TradeEventRepository;
 
 class TradeEventXmlLoaderTest {
@@ -50,7 +50,8 @@ class TradeEventXmlLoaderTest {
     when(tradeEventXmlParser.parseFromFile(anyString())).thenReturn(TradeEvent.builder().build());
 
     //When:
-    assertThrows(InvalidInputFileException.class, () -> tradeEventXmlLoader.loadFromLocalFolder(invalidFolderPath));
+    assertThrows(InvalidInputFolderException.class,
+        () -> tradeEventXmlLoader.loadFromLocalFolder(invalidFolderPath));
 
     //Then:
     verifyNoInteractions(tradeEventXmlParser);

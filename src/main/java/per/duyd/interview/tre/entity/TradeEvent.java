@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
@@ -18,6 +20,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"buyerParty", "sellerParty", "premiumAmount",
+        "premiumCurrency"})})
 public class TradeEvent {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)

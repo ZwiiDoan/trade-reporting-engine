@@ -12,7 +12,8 @@ import per.duyd.interview.tre.entity.TradeEvent;
 @Component
 public class StringSinglePredicateBuilder implements SinglePredicateBuilder<TradeEvent> {
   @Override
-  public Predicate buildPredicate(PathBuilder<TradeEvent> entityPath, SingleSearchCriteria criteria) {
+  public Predicate buildPredicate(PathBuilder<TradeEvent> entityPath,
+                                  SingleSearchCriteria criteria) {
     StringPath path = entityPath.getString(criteria.getKey().name());
     String value = criteria.getValue();
     return switch (criteria.getCop()) {
