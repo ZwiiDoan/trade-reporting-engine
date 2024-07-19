@@ -19,7 +19,7 @@ The build pipeline integrates different tools to verify code quality and securit
 * [Spotbugs](https://spotbugs.github.io/) with plugin [FindSecBugs](https://find-sec-bugs.github.io/) that do static
   analysis to look for common bugs and security bugs in Java code
 * [Jacoco](https://github.com/jacoco/jacoco) to ensure code and test coverage. The minimum instruction
-  and branch coverage of this repo is 95% which is satisfied by unit tests and integration tests.
+  and branch coverage of this repo is 100% which is satisfied by unit tests and integration tests.
 
 ### Run
 
@@ -35,7 +35,7 @@ Open http://localhost:8080/swagger-ui/index.html to try out the endpoints.
   Sample request
   is [src/test/resources/requests/load_data/valid_request.json](src/test/resources/requests/load_data/valid_request.json)
   which will load sample events from folder [src/test/resources/events](src/test/resources/events)
-* After that, the other 2 endpoints can be used to get the DEFAULT report or generate dynamic reports with sample
+* After that, the other 2 endpoints can be used to get the static DEFAULT report or generate dynamic reports with sample
   requests in [src/test/resources/requests/generate_report](src/test/resources/requests/generate_report).
 
 ### Future Improvements & Considerations
