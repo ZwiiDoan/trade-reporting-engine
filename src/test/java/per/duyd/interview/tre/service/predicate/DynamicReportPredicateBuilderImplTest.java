@@ -1,4 +1,4 @@
-package per.duyd.interview.tre.service.mapper;
+package per.duyd.interview.tre.service.predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -23,11 +23,6 @@ import per.duyd.interview.tre.dto.request.SearchKey;
 import per.duyd.interview.tre.dto.request.SingleSearchCriteria;
 import per.duyd.interview.tre.entity.TradeEvent;
 import per.duyd.interview.tre.exception.InvalidSearchCriteriaException;
-import per.duyd.interview.tre.service.predicate.DecimalSinglePredicateBuilder;
-import per.duyd.interview.tre.service.predicate.DynamicReportPredicateBuilder;
-import per.duyd.interview.tre.service.predicate.DynamicReportPredicateBuilderImpl;
-import per.duyd.interview.tre.service.predicate.SinglePredicateBuilder;
-import per.duyd.interview.tre.service.predicate.StringSinglePredicateBuilder;
 
 class DynamicReportPredicateBuilderImplTest {
 

@@ -9,9 +9,15 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlGroup;
 import per.duyd.interview.tre.dto.response.GenericErrorResponse;
 import per.duyd.interview.tre.repository.TradeEventRepository;
 
+@SqlGroup({
+    @Sql(scripts = "/sql/cleanup_trade_event_data.sql"),
+    @Sql(scripts = "/sql/cleanup_trade_event_data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+})
 class LoadTradeReportDataTest extends BaseIntegrationTest {
 
   @Autowired
